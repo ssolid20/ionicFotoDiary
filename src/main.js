@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import firebase from './firebase'
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -22,11 +24,16 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+let {projectAuth} = firebase
+let app
 
-const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
-  
+projectAuth.onAuthStateChanged(() => {
+  if (!app) {app = createApp(App)
+      .use(IonicVue).use(router).mount('#app')}})
+
+
 router.isReady().then(() => {
   app.mount('#app');
 });
+
+defineCustomElements(window);
