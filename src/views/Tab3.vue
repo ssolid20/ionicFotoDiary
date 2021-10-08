@@ -12,6 +12,10 @@
     </ion-header>
     <ion-content :fullscreen="true">
 
+    <ion-refresher slot="fixed" @ionRefresh="doRefresh()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
       <div v-if="peopleToSpeak" >
       <ion-list  v-for="x in peopleToSpeak" :key="x">
           <ion-item @click="starChat(x.email)">
@@ -31,7 +35,7 @@
 </template>
 
 <script  >
-import { IonPage, IonHeader,IonLabel,IonList,IonItem,IonAvatar, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage,IonRefresher,IonRefresherContent, IonHeader,IonLabel,IonList,IonItem,IonAvatar, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { arrowBack} from 'ionicons/icons';
 import { useRouter } from 'vue-router'
 import firebase from '../firebase.js'
@@ -39,7 +43,7 @@ import getUser from '../composables/getUser'
 import {ref} from 'vue'
 export default  {
   name: 'Tab3',
-  components: {  IonHeader, IonToolbar,IonLabel,IonList,IonItem,IonAvatar, IonTitle, IonContent, IonPage },
+  components: {  IonHeader,IonRefresher,IonRefresherContent, IonToolbar,IonLabel,IonList,IonItem,IonAvatar, IonTitle, IonContent, IonPage },
   setup(){
         const {projectFirestore} = firebase
         const { user } = getUser()
@@ -70,7 +74,8 @@ export default  {
       router.push({name:'chat',params:{email:x}})
 
     }
-    return{goback,arrowBack,peopleToSpeak,starChat}
+    let doRefresh=()=>{router.go()}
+    return{goback,arrowBack,peopleToSpeak,starChat,doRefresh,}
   }
 }
 </script>
