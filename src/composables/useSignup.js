@@ -24,7 +24,9 @@ const signup = async (email, password, displayName) => {
       email:email,
       subs:[],
       displayName:displayName,
-      describtion:''
+      describtion:'',
+      chatedwith:[],
+      chats:[]
     }).catch(err =>{
       console.log(err)
       })

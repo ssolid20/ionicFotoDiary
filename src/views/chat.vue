@@ -41,7 +41,7 @@
             </div>
               
 
-               <ion-textarea  class="font" style="margin-top:60px;text-align:center;position: sticky;bottom: 0;background-color: white;border: 5px solid white"  placeholder="write your message" v-model="message" @keypress.enter="writeMessage"  auto-grow></ion-textarea>
+               <ion-textarea  class="font text"   placeholder="write your message" v-model="message" @keypress.enter="writeMessage"  auto-grow></ion-textarea>
                 <p  id="bottom" ></p>
         </ion-content>
 
@@ -131,8 +131,8 @@ export default {
 
 
         onUpdated(()=>{
-            document.getElementById( 'bottom' ).scrollIntoView({block: "end",behavior:"smooth"});
-
+          document.getElementById( 'bottom' ).scrollIntoView({block: "end",behavior:"smooth"});
+          
         })
 
 
@@ -172,5 +172,14 @@ export default {
 .font{font-family: 'Hammersmith One', sans-serif;}
 .test{
   color:blue
+}
+.text{
+  margin-top:60px;
+  text-align:center;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  border: 5px solid white
+
 }
 </style>

@@ -107,28 +107,14 @@ export default {
   transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
 .test{
     
   display: block;
   margin-left: auto;
   margin-right: auto;
-   width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 
 }
 </style>

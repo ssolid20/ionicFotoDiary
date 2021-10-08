@@ -38,7 +38,7 @@
                     <ion-icon :icon="star"  ></ion-icon>
                 </ion-fab-button>
 
-                 <ion-fab-button  @click="shareFunc" size="small" color="danger" slot="start" >
+                 <ion-fab-button  @click="shareFunc(foto.foto,foto.message,aboutproper.displayName)" size="small" color="danger" slot="start" >
                     <ion-icon :icon="share"  ></ion-icon>
                 </ion-fab-button>     
                   <ion-toast
@@ -177,11 +177,9 @@ export default defineComponent({
           text:comment.value,
           time: Date.now(),
           newtime:'',
-
-
         }
         projectFirestore.collection(`all-fotos`).doc(id.value).update({
-          comments:[...foto.value.comments,addComment]
+         comments:[...foto.value.comments,addComment]
         })
         comment.value=''
 
@@ -221,13 +219,12 @@ export default defineComponent({
       tookback.value=!tookback.value
 
     }
-    let shareFunc= async(x,y,z)=>{
-      console.log(x,y,z)
+      let shareFunc= async(x,y,z)=>{
       if (navigator.canShare) {
               navigator.share({
-                  url: 'https://fireship.io',
-                  title: 'PWAs are awesome!',
-                  text: 'I learned how to build a PWA today',
+                  url: `${x}`,
+                  title: z,
+                  text: y,
               })
           
           .then(() => console.log('Successful share'))

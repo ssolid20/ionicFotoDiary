@@ -11,7 +11,7 @@
           <ion-icon :icon="search" />
         </ion-tab-button>
         <ion-tab-button tab="tab3"  @click="gotothird">
-          <ion-icon :icon="heart" />
+          <ion-icon :icon="chatbubble" />
         </ion-tab-button>
       <ion-tab-button tab="tab4"  @click="gotofourth">
           <ion-icon :icon="camera" />
@@ -26,7 +26,7 @@
 
 <script >
 import { IonTabBar, IonTabButton, IonTabs, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { search, heart,home,camera,person} from 'ionicons/icons';
+import { search, chatbubble,home,camera,person} from 'ionicons/icons';
 import{useRouter} from'vue-router'
 export default {
   name: 'Tabs',
@@ -41,7 +41,7 @@ export default {
 
     return {
       search, 
-      heart, 
+      chatbubble, 
       home,camera,person,gotofifth,gotofourth,gotothird,gotofirst,gotosecond
     }
   }

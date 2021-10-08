@@ -153,6 +153,7 @@ export default defineComponent({
                     let h=doc.data()
                     h.subs=doc.data().subs
                     h.id = doc.id
+                    h.chatedwith
                     idfordatabase.value= h
 
                 })
@@ -218,10 +219,20 @@ export default defineComponent({
         let x = fotofromdb.value.slice(2*(r/3),r);
        return  x
       })
-    const doRefresh = ()=>{router.go()}
-    let goback=()=>{router.go(-1)}
-    let lookatfoto=(x)=>{ router.push({name:'lookatfoto',params:{id:x}})}
-    const startChat=()=>{router.push({name:'chat',params:{email:profileof.value}})}
+      const doRefresh = ()=>{router.go()}
+      let goback=()=>{router.go(-1)}
+      let lookatfoto=(x)=>{ router.push({name:'lookatfoto',params:{id:x}})}
+      const startChat=()=>{
+        if (idfordatabase.value.chatedwith.includes(profileof.value)){
+            console.log()            
+        }else {
+          projectFirestore.collection(`${user.value.email}`).doc(idfordatabase.value.id).update({
+                  chatedwith:[...idfordatabase.value.chatedwith,profileof.value]
+              })
+
+        }
+        router.push({name:'chat',params:{email:profileof.value}})
+      }
 
     return{
       user,doRefresh,lookatfoto,arrowBack,goback,startChat,test1,test2,test3
