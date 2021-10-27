@@ -26,6 +26,7 @@
                 <h3 class="font">{{x.displayName}}</h3>
                 <p class="font">Tap to chat</p>
               </ion-label>
+              x
           </ion-item>
       </ion-list>
       </div>
